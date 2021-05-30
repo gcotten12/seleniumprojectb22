@@ -43,6 +43,7 @@ public class iframePractice {
         WebElement yourContentGoesHereText = driver.findElement(By.xpath("//p"));
         Assert.assertTrue(yourContentGoesHereText.isDisplayed());
 
+        // we have to switch out of the inner frame to reach the web elements in the parent frame
         // driver.switchTo().parentFrame();
         driver.switchTo().defaultContent();
         WebElement headerText = driver.findElement(By.xpath("//h3"));
