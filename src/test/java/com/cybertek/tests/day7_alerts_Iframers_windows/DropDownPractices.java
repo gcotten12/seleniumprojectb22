@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
@@ -50,6 +51,11 @@ public class DropDownPractices {
 
         Assert.assertEquals(actualTextOfStateDropDown,expectedTextOfStateDropDown);
 
+    }
+
+    @AfterClass
+    public void teardownClass() {
+        driver.close();
     }
 
 }
