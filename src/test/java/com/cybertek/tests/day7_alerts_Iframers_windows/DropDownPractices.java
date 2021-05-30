@@ -17,16 +17,6 @@ public class DropDownPractices {
     // making WebDriver an instance variable so we can use it everywhere in our class
     WebDriver driver;
 
-    /**
-     * TC#1: Verifying “Simple dropdown” and “State selection” dropdown default values
-     * 1. Open Chrome browser
-     * 2. Go to http://practice.cybertekschool.com/dropdown
-     * 3. Verify “Simple dropdown” default selected value is correct
-     * Expected: “Please select an option”
-     * 4. Verify “State selection” default selected value is correct
-     * Expected: “Select a State”
-     */
-
     @BeforeClass
     public void setUpClass(){
         driver = WebDriverFactory.getDriver("chrome");
@@ -37,6 +27,17 @@ public class DropDownPractices {
 
     @Test
     public void tc1_simple_dropdown_test(){
+
+        /**
+         * TC#1: Verifying “Simple dropdown” and “State selection” dropdown default values
+         * 1. Open Chrome browser
+         * 2. Go to http://practice.cybertekschool.com/dropdown
+         * 3. Verify “Simple dropdown” default selected value is correct
+         * Expected: “Please select an option”
+         * 4. Verify “State selection” default selected value is correct
+         * Expected: “Select a State”
+         */
+
         Select simpleDropdown = new Select(driver.findElement(By.xpath("//select[@id='dropdown']")));
         WebElement currentlySelectedOption = simpleDropdown.getFirstSelectedOption();
         String actualTextOfCurrentOption = currentlySelectedOption.getText();
@@ -50,6 +51,29 @@ public class DropDownPractices {
         String expectedTextOfStateDropDown = "Select a State";
 
         Assert.assertEquals(actualTextOfStateDropDown,expectedTextOfStateDropDown);
+
+    }
+
+    @Test
+    public void tc2() {
+
+        /**
+         * TC #2: Selecting state from State dropdown and verifying result
+         * 3. Select Illinois
+         * 4. Select Virginia
+         * 5. Select California
+         * 6. Verify final selected option is California.
+         * Use all Select options. (visible text, value, index)
+         */
+
+        Select stateDropDown = new Select(driver.findElement(By.xpath("//select[@id='state']")));
+        stateDropDown.selectByVisibleText("Illinois");
+        stateDropDown.selectByValue("VA");
+        stateDropDown.selectByIndex(5);
+        String expectedOptionText = "California";
+        String actualOptionText = stateDropDown.getFirstSelectedOption().getText();
+
+        Assert.assertEquals(actualOptionText, expectedOptionText);
 
     }
 
