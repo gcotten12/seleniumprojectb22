@@ -1,6 +1,7 @@
 package com.cybertek.tests.day10_webtable_properties_practices;
 
 import com.cybertek.utilities.ConfigurationReader;
+import com.cybertek.utilities.TableUtils;
 import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -41,4 +42,10 @@ public class Table_Tasks {
         Assert.assertEquals(expectedText,actualText);
 
     }
+
+    @Test
+    public void task4VerifyIfNameIsInTable() {
+        TableUtils.verifyOrder(driver, "Tim");
+
+   }
 }
