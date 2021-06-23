@@ -1,7 +1,9 @@
 package com.cybertek.tests.day12_actions_uploads_jsexecuter;
 
+import com.cybertek.utilities.BrowserUtils;
 import com.cybertek.utilities.Driver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
@@ -38,9 +40,17 @@ public class ActionsPractice {
     @Test
     public void scrolling_test() {
         Driver.getDriver().get("http://practice.cybertekschool.com/");
+
         Actions action = new Actions(Driver.getDriver());
+
         WebElement poweredByCybertekButton = Driver.getDriver().findElement(By.linkText("Cybertek School"));
         action.moveToElement(poweredByCybertekButton).perform();
+
+        BrowserUtils.sleep(3);
+
+        action.sendKeys(Keys.PAGE_UP).perform();
+        action.sendKeys(Keys.PAGE_DOWN).perform();
+
     }
 
 }
